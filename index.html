@@ -19,11 +19,14 @@
 
     <link rel="stylesheet" href="styles/index.css" />
 
+    <script src="scripts/utils.js" defer></script>
     <script src="scripts/scroll-reveal.js" defer></script>
     <script src="scripts/text-highlight.js" defer></script>
     <script src="scripts/video-player.js" defer></script>
     <script src="scripts/slider.js" defer></script>
     <script src="scripts/cards.js" defer></script>
+    <script src="scripts/podcast.js" defer></script>
+    <script src="scripts/activity.js" defer></script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
@@ -401,8 +404,187 @@
           </article>
         </div>
       </section>
+
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro__header">
+          <h2 id="intro-title" class="intro__title" data-reveal>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit
+          </h2>
+          <p class="intro__subtitle" data-reveal="100">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout.
+          </p>
+        </div>
+      </section>
+
+      <section class="podcast" aria-labelledby="podcast-title" data-podcast data-reveal>
+        <h2 id="podcast-title" class="sr-only">Player de áudio</h2>
+        <audio preload="metadata">
+          <source src="assets/audio/sample.mp3" type="audio/mpeg" />
+          Seu navegador não suporta o elemento de áudio.
+        </audio>
+
+        <button
+          type="button"
+          class="podcast__play"
+          data-podcast-toggle
+          aria-label="Reproduzir áudio"
+        >
+          <img
+            src="assets/icons/play.svg"
+            alt=""
+            class="podcast__play-icon"
+            data-podcast-toggle-icon
+          />
+        </button>
+
+        <div
+          class="podcast__progress"
+          data-podcast-progress
+          role="slider"
+          aria-label="Progresso do áudio"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          tabindex="0"
+        >
+          <div class="podcast__progress-fill" data-podcast-progress-fill></div>
+          <span class="podcast__thumb podcast__thumb--lg" style="left: 0%"></span>
+        </div>
+
+        <span class="podcast__time" data-podcast-time>00:00</span>
+
+        <div class="podcast__volume-group">
+          <button
+            type="button"
+            class="podcast__volume-btn"
+            data-podcast-mute
+            aria-label="Silenciar"
+          >
+            <img
+              src="assets/icons/volume.svg"
+              alt=""
+              class="podcast__volume-icon"
+            />
+          </button>
+          <div
+            class="podcast__volume"
+            data-podcast-volume
+            role="slider"
+            aria-label="Volume"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="100"
+            tabindex="0"
+          >
+            <div
+              class="podcast__volume-fill"
+              data-podcast-volume-fill
+              style="width: 100%"
+            ></div>
+            <span class="podcast__thumb podcast__thumb--sm" style="left: 100%"></span>
+          </div>
+        </div>
+
+        <div class="podcast__speed" data-podcast-speed>
+          <button
+            type="button"
+            class="podcast__settings"
+            data-podcast-speed-toggle
+            aria-label="Velocidade de reprodução"
+            aria-expanded="false"
+          >
+            <img
+              src="assets/icons/settings.svg"
+              alt=""
+              class="podcast__settings-icon"
+            />
+          </button>
+          <ul class="podcast__speed-menu" role="menu" hidden>
+            <li role="menuitem">
+              <button type="button" class="podcast__speed-opt" data-speed="0.5">0.5x</button>
+            </li>
+            <li role="menuitem">
+              <button type="button" class="podcast__speed-opt podcast__speed-opt--active" data-speed="1">1x</button>
+            </li>
+            <li role="menuitem">
+              <button type="button" class="podcast__speed-opt" data-speed="1.25">1.25x</button>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="activity"
+        aria-labelledby="activity-discursive-title"
+        data-activity="discursive"
+        data-reveal
+      >
+        <div class="activity__header">
+          <div class="activity__icon-wrap">
+            <img
+              src="assets/icons/activity-discursive.svg"
+              alt=""
+              class="activity__icon"
+            />
+          </div>
+          <div class="activity__info">
+            <h2 id="activity-discursive-title" class="activity__title">
+              Atividade discursiva
+            </h2>
+            <p class="activity__desc">
+              It is a long established fact that a reader will be distracted
+              by the readable content of a page when looking at its layout.
+            </p>
+          </div>
+        </div>
+
+        <textarea
+          class="activity__textarea"
+          placeholder="Digite sua resposta aqui..."
+          aria-label="Resposta da atividade discursiva"
+          data-activity-input
+          rows="5"
+        ></textarea>
+
+        <div class="activity__actions">
+          <button
+            type="button"
+            class="activity__btn activity__btn--submit"
+            data-activity-submit
+            disabled
+          >
+            Responder
+          </button>
+          <button
+            type="button"
+            class="activity__btn activity__btn--edit"
+            data-activity-edit
+            disabled
+          >
+            Alterar
+          </button>
+        </div>
+
+        <div class="activity__feedback" data-activity-feedback hidden>
+          <button
+            type="button"
+            class="activity__feedback-close"
+            data-activity-feedback-close
+            aria-label="Fechar feedback"
+          >
+            <img src="assets/icons/close.svg" alt="" />
+          </button>
+          <strong class="activity__feedback-title">É isso aí!</strong>
+          <p class="activity__feedback-text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Pariatur commodi odio maiores accusamus aspernatur consequatur
+            ipsam dignissimos magnam hic, velit est perferendis explicabo
+            aperiam ratione veritatis labore.
+          </p>
+        </div>
+      </section>
     </main>
 
-    <!-- footer será implementado na próxima etapa -->
   </body>
 </html>

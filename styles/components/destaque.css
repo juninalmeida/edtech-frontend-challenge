@@ -6,6 +6,7 @@
 }
 
 .destaque__text {
+  max-width: 65ch;
   font-size: var(--text-lg);
   font-weight: var(--font-medium);
   line-height: var(--leading-relaxed);

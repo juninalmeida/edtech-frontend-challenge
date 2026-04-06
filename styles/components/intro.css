@@ -1,0 +1,21 @@
+.intro__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.intro__title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-black);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-section);
+  color: var(--color-text-section);
+}
+
+.intro__subtitle {
+  padding-top: var(--spacing-sm);
+  font-size: var(--text-lg);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text-olive);
+}
