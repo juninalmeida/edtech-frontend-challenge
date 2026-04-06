@@ -1,7 +1,6 @@
 :root {
   --color-dark: #0c0a08;
   --color-green: #76b900;
-  /* Figma especifica #77b902 no FAQ — deltaE < 1, mantido por fidelidade */
   --color-green-faq: #77b902;
   --color-white: #ffffff;
   --color-page-bg: #f7f8f5;
@@ -39,10 +38,24 @@
 
   --color-overlay-5: rgba(255, 255, 255, 0.05);
   --color-overlay-10: rgba(255, 255, 255, 0.1);
+  --color-overlay-30: rgba(255, 255, 255, 0.3);
 
   --color-green-glow: rgba(118, 185, 0, 0.3);
   --color-green-blur: rgba(118, 185, 0, 0.1);
   --color-green-border: rgba(118, 185, 0, 0.2);
+
+  --color-semaphore-red: rgba(239, 68, 68, 0.8);
+  --color-semaphore-yellow: rgba(234, 179, 8, 0.8);
+  --color-semaphore-green: rgba(34, 197, 94, 0.8);
+
+  --color-video-overlay: rgba(0, 0, 0, 0.1);
+  --color-video-play-bg: rgba(28, 35, 47, 0.8);
+  --color-video-gradient-start: rgba(0, 0, 0, 0.9);
+  --color-video-gradient-mid: rgba(0, 0, 0, 0.6);
+
+  --color-grid-line: rgb(34, 34, 34);
+  --color-grid-line-transparent: rgba(34, 34, 34, 0);
+  --color-backdrop-fallback: rgba(12, 10, 8, 0.85);
 
   --font-primary: "Inter", sans-serif;
   --font-mono: "Liberation Mono", "Courier New", monospace;

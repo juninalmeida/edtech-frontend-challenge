@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EdTech - Plataforma de Ensino</title>
+    <meta name="description" content="Plataforma de ensino digital com cursos interativos, aulas em vídeo e acompanhamento de progresso." />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +15,10 @@
     />
 
     <link rel="stylesheet" href="styles/index.css" />
+
+    <script src="scripts/scroll-reveal.js" defer></script>
+    <script src="scripts/text-highlight.js" defer></script>
+    <script src="scripts/video-player.js" defer></script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
@@ -28,15 +34,15 @@
 
       <div class="hero__container">
         <div class="hero__content">
-          <div class="hero__bar" aria-hidden="true"></div>
-          <h1 class="hero__title">
-            Lorem ipsum dolor, sit <span class="hero__highlight">amet</span>
+          <div class="hero__bar" aria-hidden="true" data-reveal></div>
+          <h1 class="hero__title" data-reveal>
+            Lorem ipsum dolor, sit <span class="hero__highlight" data-highlight="700">amet</span>
           </h1>
-          <p class="hero__subtitle">
+          <p class="hero__subtitle" data-reveal="150">
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout.
           </p>
-          <a href="#main-content" class="hero__cta">
+          <a href="#main-content" class="hero__cta" data-reveal="300">
             Lorem Ipsum
             <img
               src="assets/icons/cta-arrow.svg"
@@ -46,7 +52,7 @@
           </a>
         </div>
 
-        <div class="hero__dashboard" aria-hidden="true">
+        <div class="hero__dashboard" aria-hidden="true" data-reveal="450">
           <div class="hero__dashboard-header">
             <div class="hero__dashboard-dots">
               <span class="hero__semaphore hero__semaphore--red"></span>
@@ -75,7 +81,69 @@
       </div>
     </header>
 
-    <main id="main-content"></main>
+    <main id="main-content">
+      <section class="video" aria-labelledby="video-title">
+        <div class="video__header">
+          <h2 id="video-title" class="video__title" data-reveal>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit
+          </h2>
+          <p class="video__subtitle" data-reveal="100">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout.
+          </p>
+        </div>
+
+        <div class="video__player" data-video-player data-reveal="200">
+          <video
+            class="video__media"
+            poster="assets/images/video-thumbnail.png"
+            preload="metadata"
+            playsinline
+          >
+            <source src="assets/videos/sample.mp4" type="video/mp4" />
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+
+          <div class="video__overlay" data-video-overlay></div>
+
+          <button class="video__play-btn" data-video-play aria-label="Reproduzir vídeo">
+            <img src="assets/icons/play.svg" alt="" class="video__play-icon" />
+          </button>
+
+          <div class="video__controls" data-video-controls role="toolbar" aria-label="Controles do vídeo">
+            <button class="video__control-btn" data-video-toggle aria-label="Reproduzir">
+              <img src="assets/icons/play.svg" alt="" class="video__control-icon video__control-icon--sm" data-video-toggle-icon />
+            </button>
+
+            <div class="video__slider video__progress" data-video-progress
+                 role="slider" aria-label="Progresso do vídeo"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                 tabindex="0">
+              <div class="video__slider-fill" data-video-progress-fill></div>
+              <span class="video__slider-thumb" style="left: 0%"></span>
+            </div>
+
+            <span class="video__time" data-video-time>00:00</span>
+
+            <button class="video__control-btn" data-video-mute aria-label="Silenciar">
+              <img src="assets/icons/volume.svg" alt="" class="video__control-icon" />
+            </button>
+
+            <div class="video__slider video__volume" data-video-volume
+                 role="slider" aria-label="Volume"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"
+                 tabindex="0">
+              <div class="video__slider-fill" data-video-volume-fill style="width: 100%"></div>
+              <span class="video__slider-thumb" style="left: 100%"></span>
+            </div>
+
+            <button class="video__control-btn" data-video-fullscreen aria-label="Tela cheia">
+              <img src="assets/icons/fullscreen.svg" alt="" class="video__control-icon" />
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer"></footer>
   </body>

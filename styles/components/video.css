@@ -1,0 +1,217 @@
+.video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-section-gap);
+}
+
+.video__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.video__title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-black);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-section);
+  color: var(--color-text-section);
+}
+
+.video__subtitle {
+  padding-top: var(--spacing-sm);
+  font-size: var(--text-lg);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text-olive);
+}
+
+.video__player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-dark);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.video__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-video-overlay);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.video__player.is-playing .video__overlay,
+.video__player.is-playing .video__play-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* pointer-events: none impede toques fantasma na barra invisível em mobile */
+.video__player.is-playing .video__controls {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.video__player.is-playing:hover .video__controls,
+.video__player.is-playing.is-controls-visible .video__controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.video__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-full);
+  background: var(--color-video-play-bg);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: var(--shadow-md);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.video__play-btn:hover {
+  opacity: 0.85;
+}
+
+.video__play-icon {
+  width: 0.9375rem;
+  height: 1.1875rem;
+  margin-left: 0.125rem;
+}
+
+.video__controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: 3rem 1rem 1rem;
+  background: linear-gradient(
+    to top,
+    var(--color-video-gradient-start),
+    var(--color-video-gradient-mid) 50%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.video__control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.video__control-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.video__control-icon--sm {
+  width: 0.6875rem;
+  height: 0.875rem;
+}
+
+
+/* 24px de hit area para toque; o track visual (::before) tem apenas 4px */
+.video__slider {
+  position: relative;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.video__slider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--color-overlay-30);
+  border-radius: var(--radius-full);
+}
+
+.video__slider-fill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--color-white);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+.video__slider-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: var(--color-white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: width 0.15s, height 0.15s;
+  pointer-events: none;
+}
+
+.video__slider:hover .video__slider-thumb,
+.video__slider.is-dragging .video__slider-thumb {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+
+.video__progress {
+  flex: 1;
+}
+
+
+.video__time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-white);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+
+.video__volume {
+  width: 3.5rem;
+  flex-shrink: 0;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .video__overlay,
+  .video__play-btn,
+  .video__controls,
+  .video__slider-thumb {
+    transition: none;
+  }
+}
