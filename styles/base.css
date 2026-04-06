@@ -27,6 +27,18 @@ main > section {
 }
 
 /* WCAG 2.4.1: clip ao invés de transform para evitar flash no load */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: absolute;
   width: 1px;

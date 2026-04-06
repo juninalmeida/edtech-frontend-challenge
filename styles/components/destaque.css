@@ -1,0 +1,13 @@
+.destaque {
+  background-color: var(--color-destaque-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-xl);
+}
+
+.destaque__text {
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-relaxed);
+  color: var(--color-white);
+}

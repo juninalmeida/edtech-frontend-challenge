@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EdTech - Plataforma de Ensino</title>
-    <meta name="description" content="Plataforma de ensino digital com cursos interativos, aulas em vídeo e acompanhamento de progresso." />
+    <meta
+      name="description"
+      content="Plataforma de ensino digital com cursos interativos, aulas em vídeo e acompanhamento de progresso."
+    />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +22,8 @@
     <script src="scripts/scroll-reveal.js" defer></script>
     <script src="scripts/text-highlight.js" defer></script>
     <script src="scripts/video-player.js" defer></script>
+    <script src="scripts/slider.js" defer></script>
+    <script src="scripts/cards.js" defer></script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
@@ -36,7 +41,8 @@
         <div class="hero__content">
           <div class="hero__bar" aria-hidden="true" data-reveal></div>
           <h1 class="hero__title" data-reveal>
-            Lorem ipsum dolor, sit <span class="hero__highlight" data-highlight="700">amet</span>
+            Lorem ipsum dolor, sit
+            <span class="hero__highlight" data-highlight="700">amet</span>
           </h1>
           <p class="hero__subtitle" data-reveal="150">
             It is a long established fact that a reader will be distracted by
@@ -69,7 +75,11 @@
             </div>
             <div class="hero__dashboard-main">
               <div class="hero__dashboard-chart">
-                <img src="assets/images/hero-chart.svg" alt="" class="hero__chart" />
+                <img
+                  src="assets/images/hero-chart.svg"
+                  alt=""
+                  class="hero__chart"
+                />
               </div>
               <div class="hero__dashboard-grid">
                 <div class="hero__dashboard-card"></div>
@@ -106,45 +116,293 @@
 
           <div class="video__overlay" data-video-overlay></div>
 
-          <button class="video__play-btn" data-video-play aria-label="Reproduzir vídeo">
+          <button
+            class="video__play-btn"
+            data-video-play
+            aria-label="Reproduzir vídeo"
+          >
             <img src="assets/icons/play.svg" alt="" class="video__play-icon" />
           </button>
 
-          <div class="video__controls" data-video-controls role="toolbar" aria-label="Controles do vídeo">
-            <button class="video__control-btn" data-video-toggle aria-label="Reproduzir">
-              <img src="assets/icons/play.svg" alt="" class="video__control-icon video__control-icon--sm" data-video-toggle-icon />
+          <div
+            class="video__controls"
+            data-video-controls
+            role="toolbar"
+            aria-label="Controles do vídeo"
+          >
+            <button
+              class="video__control-btn"
+              data-video-toggle
+              aria-label="Reproduzir"
+            >
+              <img
+                src="assets/icons/play.svg"
+                alt=""
+                class="video__control-icon video__control-icon--sm"
+                data-video-toggle-icon
+              />
             </button>
 
-            <div class="video__slider video__progress" data-video-progress
-                 role="slider" aria-label="Progresso do vídeo"
-                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
-                 tabindex="0">
+            <div
+              class="video__slider video__progress"
+              data-video-progress
+              role="slider"
+              aria-label="Progresso do vídeo"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              tabindex="0"
+            >
               <div class="video__slider-fill" data-video-progress-fill></div>
               <span class="video__slider-thumb" style="left: 0%"></span>
             </div>
 
             <span class="video__time" data-video-time>00:00</span>
 
-            <button class="video__control-btn" data-video-mute aria-label="Silenciar">
-              <img src="assets/icons/volume.svg" alt="" class="video__control-icon" />
+            <button
+              class="video__control-btn"
+              data-video-mute
+              aria-label="Silenciar"
+            >
+              <img
+                src="assets/icons/volume.svg"
+                alt=""
+                class="video__control-icon"
+              />
             </button>
 
-            <div class="video__slider video__volume" data-video-volume
-                 role="slider" aria-label="Volume"
-                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"
-                 tabindex="0">
-              <div class="video__slider-fill" data-video-volume-fill style="width: 100%"></div>
+            <div
+              class="video__slider video__volume"
+              data-video-volume
+              role="slider"
+              aria-label="Volume"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="100"
+              tabindex="0"
+            >
+              <div
+                class="video__slider-fill"
+                data-video-volume-fill
+                style="width: 100%"
+              ></div>
               <span class="video__slider-thumb" style="left: 100%"></span>
             </div>
 
-            <button class="video__control-btn" data-video-fullscreen aria-label="Tela cheia">
-              <img src="assets/icons/fullscreen.svg" alt="" class="video__control-icon" />
+            <button
+              class="video__control-btn"
+              data-video-fullscreen
+              aria-label="Tela cheia"
+            >
+              <img
+                src="assets/icons/fullscreen.svg"
+                alt=""
+                class="video__control-icon"
+              />
             </button>
           </div>
         </div>
       </section>
+
+      <section class="lateral" aria-labelledby="lateral-title">
+        <h2 id="lateral-title" class="sr-only">Conteúdo complementar</h2>
+        <img
+          src="assets/images/nature-waves.png"
+          alt="Ondas do mar quebrando na costa"
+          class="lateral__image"
+          data-reveal
+        />
+        <div class="lateral__content" data-reveal="150">
+          <p class="lateral__text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
+            voluptatum voluptatibus aperiam cum quasi repudiandae nostrum, sed
+            amet quam maiores eum consectetur ipsa dolores quis ducimus, iusto
+            dicta consequuntur facere!
+          </p>
+          <p class="lateral__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
+            quia! Cumque ipsum harum fuga perferendis autem incidunt dolorem
+            voluptatum illo, quis explicabo. Possimus repudiandae dolore
+            architecto, hic dolorum ab.
+          </p>
+        </div>
+      </section>
+
+      <section class="slider" aria-labelledby="slider-title" data-slider data-reveal>
+        <h2 id="slider-title" class="sr-only">Galeria de imagens</h2>
+        <div class="slider__track" data-slider-track>
+          <img
+            src="assets/images/forest-road.png"
+            alt="Estrada entre pinheiros altos em floresta"
+            class="slider__slide"
+          />
+          <img
+            src="assets/images/nature-waves.png"
+            alt="Ondas do mar quebrando na costa"
+            class="slider__slide"
+          />
+          <img
+            src="assets/images/video-thumbnail.png"
+            alt="Tela de computador com interface de design"
+            class="slider__slide"
+          />
+        </div>
+
+        <div class="slider__nav">
+          <button
+            class="slider__btn slider__btn--prev"
+            data-slider-prev
+            aria-label="Slide anterior"
+          >
+            <img
+              src="assets/icons/slider-prev.svg"
+              alt=""
+              class="slider__btn-icon"
+            />
+          </button>
+
+          <div class="slider__dots" role="group" aria-label="Navegação dos slides" data-slider-dots>
+            <button
+              class="slider__dot slider__dot--active"
+              data-slider-dot="0"
+              aria-label="Ir para slide 1"
+              aria-current="true"
+            ></button>
+            <button
+              class="slider__dot"
+              data-slider-dot="1"
+              aria-label="Ir para slide 2"
+            ></button>
+            <button
+              class="slider__dot"
+              data-slider-dot="2"
+              aria-label="Ir para slide 3"
+            ></button>
+          </div>
+
+          <button
+            class="slider__btn slider__btn--next"
+            data-slider-next
+            aria-label="Próximo slide"
+          >
+            <img
+              src="assets/icons/slider-next.svg"
+              alt=""
+              class="slider__btn-icon"
+            />
+          </button>
+        </div>
+      </section>
+
+      <section class="destaque" aria-labelledby="destaque-title" data-reveal>
+        <h2 id="destaque-title" class="sr-only">Destaque</h2>
+        <p class="destaque__text">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore
+          nihil corporis suscipit soluta dolorem id consectetur, tenetur
+          nesciunt ducimus maiores sequi veritatis nostrum, esse eaque
+          delectus ea laboriosam repellendus! Ipsum nobis, mollitia facilis
+          praesentium cupiditate quidem eaque itaque nulla ab obcaecati
+          sapiente sequi porro, totam, non molestias excepturi explicabo
+          adipisci deleniti architecto animi!
+        </p>
+      </section>
+
+      <section class="cards" aria-labelledby="cards-title" data-reveal>
+        <h2 id="cards-title" class="sr-only">Descubra mais</h2>
+        <div class="cards__grid">
+          <article class="cards__item" data-card>
+            <div class="cards__front">
+              <span class="cards__icon" aria-hidden="true">?</span>
+              <button
+                type="button"
+                class="cards__btn cards__btn--open"
+                data-card-toggle
+                aria-expanded="false"
+                aria-controls="card-content-1"
+              >
+                Abrir
+              </button>
+            </div>
+            <div class="cards__back" id="card-content-1">
+              <p class="cards__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Saepe excepturi, dolores perspiciatis commodi eum dolore
+                nesciunt tempore similique at quas.
+              </p>
+              <button
+                type="button"
+                class="cards__btn cards__btn--close"
+                data-card-toggle
+                aria-expanded="false"
+              >
+                Fechar
+              </button>
+            </div>
+          </article>
+
+          <article class="cards__item" data-card>
+            <div class="cards__front">
+              <span class="cards__icon" aria-hidden="true">?</span>
+              <button
+                type="button"
+                class="cards__btn cards__btn--open"
+                data-card-toggle
+                aria-expanded="false"
+                aria-controls="card-content-2"
+              >
+                Abrir
+              </button>
+            </div>
+            <div class="cards__back" id="card-content-2">
+              <p class="cards__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Saepe excepturi, dolores perspiciatis commodi eum dolore
+                nesciunt tempore similique at quas.
+              </p>
+              <button
+                type="button"
+                class="cards__btn cards__btn--close"
+                data-card-toggle
+                aria-expanded="false"
+              >
+                Fechar
+              </button>
+            </div>
+          </article>
+
+          <article class="cards__item" data-card>
+            <div class="cards__front">
+              <span class="cards__icon" aria-hidden="true">?</span>
+              <button
+                type="button"
+                class="cards__btn cards__btn--open"
+                data-card-toggle
+                aria-expanded="false"
+                aria-controls="card-content-3"
+              >
+                Abrir
+              </button>
+            </div>
+            <div class="cards__back" id="card-content-3">
+              <p class="cards__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Saepe excepturi, dolores perspiciatis commodi eum dolore
+                nesciunt tempore similique at quas.
+              </p>
+              <button
+                type="button"
+                class="cards__btn cards__btn--close"
+                data-card-toggle
+                aria-expanded="false"
+              >
+                Fechar
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer"></footer>
+    <!-- footer será implementado na próxima etapa -->
   </body>
 </html>

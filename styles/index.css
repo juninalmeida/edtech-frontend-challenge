@@ -4,4 +4,8 @@
 
 @import 'components/hero.css';
 @import 'components/video.css';
+@import 'components/lateral.css';
+@import 'components/slider.css';
+@import 'components/destaque.css';
+@import 'components/cards.css';
 @import 'components/reveal.css';
