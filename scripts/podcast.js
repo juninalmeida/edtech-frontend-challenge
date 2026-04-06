@@ -4,7 +4,6 @@
 
   const audio = el.querySelector("audio");
   const toggleBtn = el.querySelector("[data-podcast-toggle]");
-  const toggleIcon = el.querySelector("[data-podcast-toggle-icon]");
   const progressBar = el.querySelector("[data-podcast-progress]");
   const progressFill = el.querySelector("[data-podcast-progress-fill]");
   const timeDisplay = el.querySelector("[data-podcast-time]");
@@ -33,43 +32,42 @@
     if (!audio.duration) return;
     const pct = (audio.currentTime / audio.duration) * 100;
     setSlider(progressBar, progressFill, pct);
-    timeDisplay.textContent = formatTime(audio.currentTime);
+    timeDisplay.textContent = EdTech.formatTime(audio.currentTime);
+  }
+
+  function setPlayIcon(playing) {
+    toggleBtn.classList.toggle("podcast__play--playing", playing);
+    toggleBtn.setAttribute("aria-label", playing ? "Pausar áudio" : "Reproduzir áudio");
   }
 
   toggleBtn.addEventListener("click", () => {
     if (audio.paused) {
+      setPlayIcon(true);
       audio.play().catch((err) => {
         if (err.name !== "AbortError") console.error(err);
+        setPlayIcon(false);
       });
     } else {
+      setPlayIcon(false);
       audio.pause();
     }
-  });
-
-  audio.addEventListener("play", () => {
-    toggleIcon.src = "assets/icons/pause.svg";
-    toggleBtn.setAttribute("aria-label", "Pausar áudio");
-  });
-
-  audio.addEventListener("pause", () => {
-    toggleIcon.src = "assets/icons/play.svg";
-    toggleBtn.setAttribute("aria-label", "Reproduzir áudio");
   });
 
   audio.addEventListener("timeupdate", updateProgress);
 
   audio.addEventListener("ended", () => {
+    setPlayIcon(false);
     setSlider(progressBar, progressFill, 0);
-    timeDisplay.textContent = formatTime(0);
+    timeDisplay.textContent = EdTech.formatTime(0);
   });
 
-  makeDraggable(progressBar, progressFill, setSlider, (pct) => {
+  EdTech.makeDraggable(progressBar, progressFill, setSlider, (pct) => {
     if (audio.duration) {
       audio.currentTime = (pct / 100) * audio.duration;
     }
   });
 
-  makeDraggable(volumeBar, volumeFill, setSlider, (pct) => {
+  EdTech.makeDraggable(volumeBar, volumeFill, setSlider, (pct) => {
     audio.volume = pct / 100;
     audio.muted = pct === 0;
     updateMuteLabel();
@@ -100,6 +98,10 @@
     const isOpen = !speedMenu.hidden;
     speedMenu.hidden = isOpen;
     speedToggle.setAttribute("aria-expanded", !isOpen);
+    if (!isOpen) {
+      const active = speedMenu.querySelector(".podcast__speed-opt--active");
+      if (active) active.focus();
+    }
   });
 
   speedMenu.addEventListener("click", (e) => {
@@ -118,8 +120,34 @@
 
   document.addEventListener("click", (e) => {
     if (!speedWrap.contains(e.target) && !speedMenu.hidden) {
-      speedMenu.hidden = true;
-      speedToggle.setAttribute("aria-expanded", "false");
+      closeSpeedMenu();
+    }
+  });
+
+  function closeSpeedMenu() {
+    speedMenu.hidden = true;
+    speedToggle.setAttribute("aria-expanded", "false");
+    speedToggle.focus();
+  }
+
+  speedWrap.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !speedMenu.hidden) {
+      e.preventDefault();
+      closeSpeedMenu();
+      return;
+    }
+
+    if (speedMenu.hidden) return;
+
+    const items = [...speedMenu.querySelectorAll(".podcast__speed-opt")];
+    const current = items.indexOf(document.activeElement);
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      items[(current + 1) % items.length].focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      items[(current - 1 + items.length) % items.length].focus();
     }
   });
 

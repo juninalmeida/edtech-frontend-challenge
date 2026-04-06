@@ -108,7 +108,15 @@
   color: var(--color-dark);
 }
 
+.cards__item:nth-child(n+2) {
+  display: none;
+}
+
 @media (min-width: 768px) {
+  .cards__item:nth-child(n+2) {
+    display: block;
+  }
+
   .cards__grid {
     grid-template-columns: repeat(3, 1fr);
   }

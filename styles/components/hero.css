@@ -91,7 +91,7 @@
   position: absolute;
   left: 0;
   top: calc(var(--content-indent) * -0.6);
-  width: 4px;
+  width: 0.25rem;
   height: 4rem;
   background: linear-gradient(to bottom, var(--color-green), transparent);
   border-radius: var(--radius-sm);

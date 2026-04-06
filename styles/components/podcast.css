@@ -35,6 +35,18 @@
   height: 1.125rem;
 }
 
+.podcast__play-icon--pause {
+  display: none;
+}
+
+.podcast__play--playing .podcast__play-icon--play {
+  display: none;
+}
+
+.podcast__play--playing .podcast__play-icon--pause {
+  display: block;
+}
+
 .podcast__progress {
   flex: 1;
   position: relative;
@@ -63,7 +75,7 @@
 }
 
 .podcast__thumb--lg {
-  width: 15%;
+  width: 6.5rem;
   height: 1rem;
   transform: translateY(-50%);
 }
@@ -164,8 +176,7 @@
 }
 
 @media (max-width: 480px) {
-  .podcast__volume-group,
-  .podcast__speed {
+  .podcast__volume-group {
     display: none;
   }
 }

@@ -430,12 +430,8 @@
           data-podcast-toggle
           aria-label="Reproduzir áudio"
         >
-          <img
-            src="assets/icons/play.svg"
-            alt=""
-            class="podcast__play-icon"
-            data-podcast-toggle-icon
-          />
+          <img src="assets/icons/play.svg" alt="" class="podcast__play-icon podcast__play-icon--play" />
+          <img src="assets/icons/pause.svg" alt="" class="podcast__play-icon podcast__play-icon--pause" />
         </button>
 
         <div
@@ -576,6 +572,105 @@
             <img src="assets/icons/close.svg" alt="" />
           </button>
           <strong class="activity__feedback-title">É isso aí!</strong>
+          <p class="activity__feedback-text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Pariatur commodi odio maiores accusamus aspernatur consequatur
+            ipsam dignissimos magnam hic, velit est perferendis explicabo
+            aperiam ratione veritatis labore.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="activity"
+        aria-labelledby="activity-objective-title"
+        data-activity="objective"
+        data-reveal
+      >
+        <div class="activity__header">
+          <div class="activity__icon-wrap">
+            <img
+              src="assets/icons/activity-objective.svg"
+              alt=""
+              class="activity__icon activity__icon--lg"
+            />
+          </div>
+          <div class="activity__info">
+            <h2 id="activity-objective-title" class="activity__title">
+              Atividade Objetiva
+            </h2>
+            <p class="activity__desc">
+              It is a long established fact that a reader will be distracted
+              by the readable content of a page.
+            </p>
+          </div>
+        </div>
+
+        <fieldset class="activity__options" data-activity-options>
+          <legend class="sr-only">Selecione uma alternativa</legend>
+
+          <label class="activity__option">
+            <input type="radio" name="objective" value="a" class="sr-only" data-activity-check />
+            <span class="activity__checkbox" aria-hidden="true"></span>
+            <span class="activity__option-text">
+              A) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </span>
+          </label>
+
+          <label class="activity__option">
+            <input type="radio" name="objective" value="b" class="sr-only" data-activity-check />
+            <span class="activity__checkbox" aria-hidden="true"></span>
+            <span class="activity__option-text">
+              B) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </span>
+          </label>
+
+          <label class="activity__option">
+            <input type="radio" name="objective" value="c" class="sr-only" data-activity-check />
+            <span class="activity__checkbox" aria-hidden="true"></span>
+            <span class="activity__option-text">
+              C) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </span>
+          </label>
+
+          <label class="activity__option">
+            <input type="radio" name="objective" value="d" class="sr-only" data-activity-check />
+            <span class="activity__checkbox" aria-hidden="true"></span>
+            <span class="activity__option-text">
+              D) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="activity__actions">
+          <button
+            type="button"
+            class="activity__btn activity__btn--submit"
+            data-activity-submit
+            disabled
+          >
+            Responder
+          </button>
+          <button
+            type="button"
+            class="activity__btn activity__btn--edit"
+            data-activity-edit
+            disabled
+          >
+            Alterar
+          </button>
+        </div>
+
+        <div class="activity__feedback activity__feedback--warning" data-activity-feedback hidden>
+          <button
+            type="button"
+            class="activity__feedback-close"
+            data-activity-feedback-close
+            aria-label="Fechar feedback"
+          >
+            <img src="assets/icons/close-warning.svg" alt="" />
+          </button>
+          <strong class="activity__feedback-title">Tente novamente!</strong>
           <p class="activity__feedback-text">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Pariatur commodi odio maiores accusamus aspernatur consequatur

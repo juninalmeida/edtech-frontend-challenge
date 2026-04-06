@@ -149,7 +149,7 @@
   top: 50%;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 0.25rem;
   transform: translateY(-50%);
   background: var(--color-overlay-30);
   border-radius: var(--radius-full);
@@ -159,7 +159,7 @@
   position: absolute;
   top: 50%;
   left: 0;
-  height: 4px;
+  height: 0.25rem;
   transform: translateY(-50%);
   background: var(--color-white);
   border-radius: var(--radius-full);
