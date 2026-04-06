@@ -15,9 +15,67 @@
     <link rel="stylesheet" href="styles/index.css" />
   </head>
   <body>
-    <header class="hero"></header>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <main></main>
+    <header class="hero">
+      <div class="hero__background" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <img src="assets/images/hero-curves.svg" alt="" class="hero__curves" />
+        <div class="hero__blur hero__blur--left"></div>
+        <div class="hero__blur hero__blur--right"></div>
+        <div class="hero__circle hero__circle--top"></div>
+      </div>
+
+      <div class="hero__container">
+        <div class="hero__content">
+          <div class="hero__bar" aria-hidden="true"></div>
+          <h1 class="hero__title">
+            Lorem ipsum dolor, sit <span class="hero__highlight">amet</span>
+          </h1>
+          <p class="hero__subtitle">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout.
+          </p>
+          <a href="#main-content" class="hero__cta">
+            Lorem Ipsum
+            <img
+              src="assets/icons/cta-arrow.svg"
+              alt=""
+              class="hero__cta-icon"
+            />
+          </a>
+        </div>
+
+        <div class="hero__dashboard" aria-hidden="true">
+          <div class="hero__dashboard-header">
+            <div class="hero__dashboard-dots">
+              <span class="hero__semaphore hero__semaphore--red"></span>
+              <span class="hero__semaphore hero__semaphore--yellow"></span>
+              <span class="hero__semaphore hero__semaphore--green"></span>
+            </div>
+            <div class="hero__dashboard-bar"></div>
+          </div>
+          <div class="hero__dashboard-body">
+            <div class="hero__dashboard-sidebar">
+              <div class="hero__dashboard-line"></div>
+              <div class="hero__dashboard-line"></div>
+              <div class="hero__dashboard-btn"></div>
+            </div>
+            <div class="hero__dashboard-main">
+              <div class="hero__dashboard-chart">
+                <img src="assets/images/hero-chart.svg" alt="" class="hero__chart" />
+              </div>
+              <div class="hero__dashboard-grid">
+                <div class="hero__dashboard-card"></div>
+                <div class="hero__dashboard-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content"></main>
 
     <footer class="footer"></footer>
   </body>
