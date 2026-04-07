@@ -1,21 +1,63 @@
+<div align="center">
+
 # EdTech - Plataforma de Ensino
 
-Desenvolvedor(a) Frontend na DOT Digital Group.
+Teste técnico para a vaga de Desenvolvedor(a) Frontend na **DOT Digital Group**
 
-Proposta de implementar a página do Figma usando só HTML5, CSS e JavaScript Vanilla — sem React, sem Tailwind, sem framework. Abaixo explico como rodei o projeto, como organizei o código e o porquê das decisões que tomei.
+<br />
 
----
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+![Status](https://img.shields.io/badge/status-concluído-brightgreen?style=flat-square)
+![Responsive](https://img.shields.io/badge/responsivo-mobile%20%2B%20desktop-blue?style=flat-square)
+![Accessibility](https://img.shields.io/badge/acessibilidade-WCAG%202.1-purple?style=flat-square)
+![No Frameworks](https://img.shields.io/badge/frameworks-nenhum-red?style=flat-square)
+
+<br />
+
+[Como Rodar](#como-rodar) · [Decisões Técnicas](#decisões-técnicas) · [Estrutura](#estrutura-do-projeto)
+
+</div>
+
+<br />
+
+## Sobre
+
+A proposta era implementar a página do Figma usando só HTML5, CSS e JavaScript Vanilla — sem React, sem Tailwind, sem nada. Abaixo explico como organizei o código e o porquê das decisões que tomei.
+
+<br />
 
 ## Como Rodar
 
 ```bash
-git clone https://github.com/seu-usuario/edtech-frontend-challenge.git
+git clone https://github.com/juninalmeida/edtech-frontend-challenge.git
 cd edtech-frontend-challenge
 ```
 
 Abre o `index.html` direto no navegador. Não tem `npm install`, não tem build, não tem nada pra instalar. É HTML, CSS e JS puro.
 
----
+<br />
+
+## Componentes
+
+<table>
+  <tr>
+    <td align="center" width="140"><strong>Player de Vídeo</strong><br /><sub>YouTube + local</sub></td>
+    <td align="center" width="140"><strong>Slider</strong><br /><sub>3 imagens, do zero</sub></td>
+    <td align="center" width="140"><strong>Player de Áudio</strong><br /><sub>Controle de velocidade</sub></td>
+    <td align="center" width="140"><strong>Cards Interativos</strong><br /><sub>Abrir / Fechar</sub></td>
+  </tr>
+  <tr>
+    <td align="center" width="140"><strong>Atividade Discursiva</strong><br /><sub>sessionStorage</sub></td>
+    <td align="center" width="140"><strong>Atividade Objetiva</strong><br /><sub>Checkbox + persistência</sub></td>
+    <td align="center" width="140"><strong>FAQ Accordion</strong><br /><sub>details/summary nativo</sub></td>
+    <td align="center" width="140"><strong>Scroll Reveal</strong><br /><sub>IntersectionObserver</sub></td>
+  </tr>
+</table>
+
+<br />
 
 ## Decisões Técnicas
 
@@ -51,23 +93,20 @@ No hero, os elementos de blur usam `contain: layout paint` pra dizer pro browser
 
 Esse foi um ponto que me dediquei bastante, mesmo sendo diferencial e não obrigatório.
 
-O primeiro elemento do body é um skip link — "Pular para o conteúdo" — que aparece só no foco por teclado. É o WCAG 2.4.1.
-
-Toda section tem label. As que possuem título visível usam `aria-labelledby` apontando pro heading. As que não têm título visível (slider, podcast, destaque, cards) recebem um `<h2 class="sr-only">` pra garantir que todo landmark tem nome acessível.
+| Recurso | Implementação |
+|---------|---------------|
+| **Skip Link** | Primeiro elemento do body, visível apenas no foco por teclado (WCAG 2.4.1) |
+| **Landmarks** | Toda `<section>` com `aria-labelledby` ou `<h2 class="sr-only">` |
+| **Sliders** | `role="slider"` com `aria-valuemin/max/now` atualizados pelo JS |
+| **Cards** | `aria-expanded` + `aria-controls` com foco automático pós-toggle |
+| **Carousel** | `aria-roledescription="carrossel"` + `aria-live="polite"` no track |
+| **Reduced Motion** | `prefers-reduced-motion: reduce` em todos os componentes |
+| **Focus** | `:focus-visible` global com outline verde de 2px |
+| **Formulários** | `<fieldset>/<legend>` na atividade objetiva |
 
 Sobre o `.sr-only`: optei por usar `clip` ao invés de `transform` pra esconder os elementos. O motivo é que `transform` pode causar um flash visual no carregamento, enquanto `clip: rect(0,0,0,0)` esconde sem efeito colateral.
 
-Nos players de vídeo e áudio, todos os sliders (progresso e volume) têm `role="slider"` com `aria-valuemin`, `aria-valuemax` e `aria-valuenow` atualizados pelo JS. Os controles de vídeo ficam dentro de um `role="toolbar"`, e o menu de velocidade do podcast suporta navegação por teclado (ArrowUp/Down pra navegar, Escape pra fechar).
-
-Nos cards, os botões Abrir/Fechar usam `aria-expanded` e `aria-controls` vinculado ao `id` do conteúdo. E depois de abrir ou fechar, o foco move automaticamente pro botão relevante.
-
-O slider recebe `aria-roledescription="carrossel"` e `aria-live="polite"` no track, então mudanças de slide são anunciadas pra leitores de tela.
-
-Apliquei `prefers-reduced-motion: reduce` em todos os componentes. Cada CSS de componente tem esse bloco de media query desabilitando transições. O `text-highlight.js` checa essa preferência no JS e pula a animação letra-a-letra. O `scroll-reveal.css` remove os transforms e mostra tudo de imediato.
-
-O `:focus-visible` tá definido globalmente no `base.css` — outline verde de 2px com offset. Qualquer elemento que tenha focus na página ganha esse indicador, sem afetar cliques com mouse.
-
-Na atividade objetiva, as opções ficam dentro de `<fieldset>/<legend>`, com o legend em `.sr-only` anunciando "Selecione uma alternativa".
+Nos players de vídeo e áudio, os controles de vídeo ficam dentro de um `role="toolbar"`, e o menu de velocidade do podcast suporta navegação por teclado (ArrowUp/Down pra navegar, Escape pra fechar).
 
 ---
 
@@ -123,7 +162,7 @@ A animação de altura usa `grid-template-rows: 0fr → 1fr`. Essa técnica reso
 
 Um detalhe que deu trabalho: pra animação de abertura funcionar, preciso de um double `requestAnimationFrame`. Primeiro adiciono o atributo `open` (pro DOM renderizar o conteúdo), e só no segundo frame adiciono a classe CSS que dispara a transição. Sem isso, o browser colapsa as duas mudanças no mesmo frame e a animação não acontece.
 
-Também coloquei um lock (`animating = true`) que impede cliques durante a transição. O `transitionend` reseta a flag, e a remoção do atributo `open` só acontece depois que o fechamento visual terminar.
+Adicionei um `setTimeout` de fallback no `transitionend` — se a transição não disparar por qualquer motivo (browser pular o frame, elemento oculto), o fallback garante que o accordion nunca trave.
 
 ---
 
@@ -137,7 +176,7 @@ Sem JavaScript, o texto do highlight continua verde pela classe CSS `.hero__high
 
 Os cards abrem com uma animação de reveal: `opacity 0→1` com `scale 0.96→1` em 350ms. E o dashboard do hero usa `backdrop-filter: blur(8px)` com um fallback via `@supports not` pra browsers que não suportam — nesse caso aplica um background sólido.
 
----
+<br />
 
 ## Estrutura do Projeto
 
@@ -179,3 +218,9 @@ edtech-frontend-challenge/
     ├── audio/
     └── videos/
 ```
+
+<br />
+
+<div align="center">
+  <sub>Desenvolvido por <strong>Junior Almeida</strong> como teste técnico para a DOT Digital Group.</sub>
+</div>
