@@ -19,15 +19,7 @@
 
     <link rel="stylesheet" href="styles/index.css" />
 
-    <script src="scripts/utils.js" defer></script>
-    <script src="scripts/scroll-reveal.js" defer></script>
-    <script src="scripts/text-highlight.js" defer></script>
-    <script src="scripts/video-player.js" defer></script>
-    <script src="scripts/slider.js" defer></script>
-    <script src="scripts/cards.js" defer></script>
-    <script src="scripts/podcast.js" defer></script>
-    <script src="scripts/activity.js" defer></script>
-    <script src="scripts/faq.js" defer></script>
+    <script type="module" src="scripts/main.js"></script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
@@ -107,7 +99,7 @@
           </p>
         </div>
 
-        <div class="video__player" data-video-player data-reveal="200">
+        <div class="video__player" data-video-player data-youtube-id="lM02vNMRRB0" data-reveal="200">
           <video
             class="video__media"
             poster="assets/images/video-thumbnail.png"
@@ -337,7 +329,6 @@
                 type="button"
                 class="cards__btn cards__btn--close"
                 data-card-toggle
-                aria-expanded="false"
               >
                 Fechar
               </button>
@@ -367,7 +358,6 @@
                 type="button"
                 class="cards__btn cards__btn--close"
                 data-card-toggle
-                aria-expanded="false"
               >
                 Fechar
               </button>
@@ -397,7 +387,6 @@
                 type="button"
                 class="cards__btn cards__btn--close"
                 data-card-toggle
-                aria-expanded="false"
               >
                 Fechar
               </button>
@@ -490,6 +479,7 @@
             data-podcast-speed-toggle
             aria-label="Velocidade de reprodução"
             aria-expanded="false"
+            aria-controls="speed-menu"
           >
             <img
               src="assets/icons/settings.svg"
@@ -497,15 +487,15 @@
               class="podcast__settings-icon"
             />
           </button>
-          <ul class="podcast__speed-menu" role="menu" hidden>
-            <li role="menuitem">
-              <button type="button" class="podcast__speed-opt" data-speed="0.5">0.5x</button>
+          <ul class="podcast__speed-menu" role="menu" id="speed-menu" hidden>
+            <li role="none">
+              <button type="button" role="menuitem" class="podcast__speed-opt" data-speed="0.5">0.5x</button>
             </li>
-            <li role="menuitem">
-              <button type="button" class="podcast__speed-opt podcast__speed-opt--active" data-speed="1">1x</button>
+            <li role="none">
+              <button type="button" role="menuitem" class="podcast__speed-opt podcast__speed-opt--active" data-speed="1">1x</button>
             </li>
-            <li role="menuitem">
-              <button type="button" class="podcast__speed-opt" data-speed="1.25">1.25x</button>
+            <li role="none">
+              <button type="button" role="menuitem" class="podcast__speed-opt" data-speed="1.25">1.25x</button>
             </li>
           </ul>
         </div>
@@ -611,7 +601,7 @@
           <legend class="sr-only">Selecione uma alternativa</legend>
 
           <label class="activity__option">
-            <input type="radio" name="objective" value="a" class="sr-only" data-activity-check />
+            <input type="checkbox" name="objective" value="a" class="sr-only" data-activity-check />
             <span class="activity__checkbox" aria-hidden="true"></span>
             <span class="activity__option-text">
               A) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -619,7 +609,7 @@
           </label>
 
           <label class="activity__option">
-            <input type="radio" name="objective" value="b" class="sr-only" data-activity-check />
+            <input type="checkbox" name="objective" value="b" class="sr-only" data-activity-check />
             <span class="activity__checkbox" aria-hidden="true"></span>
             <span class="activity__option-text">
               B) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -627,7 +617,7 @@
           </label>
 
           <label class="activity__option">
-            <input type="radio" name="objective" value="c" class="sr-only" data-activity-check />
+            <input type="checkbox" name="objective" value="c" class="sr-only" data-activity-check />
             <span class="activity__checkbox" aria-hidden="true"></span>
             <span class="activity__option-text">
               C) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -635,7 +625,7 @@
           </label>
 
           <label class="activity__option">
-            <input type="radio" name="objective" value="d" class="sr-only" data-activity-check />
+            <input type="checkbox" name="objective" value="d" class="sr-only" data-activity-check />
             <span class="activity__checkbox" aria-hidden="true"></span>
             <span class="activity__option-text">
               D) Lorem Ipsum is simply dummy text of the printing and typesetting industry.

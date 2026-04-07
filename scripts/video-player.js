@@ -2,6 +2,43 @@
   const player = document.querySelector('[data-video-player]');
   if (!player) return;
 
+  const youtubeId = player.dataset.youtubeId;
+
+  if (youtubeId) {
+    const video = player.querySelector('.video__media');
+    const playBtn = player.querySelector('[data-video-play]');
+    const overlay = player.querySelector('[data-video-overlay]');
+    const controls = player.querySelector('[data-video-controls]');
+
+    if (controls) controls.remove();
+
+    const poster = video ? video.getAttribute('poster') : '';
+    if (video) video.remove();
+
+    const posterImg = document.createElement('img');
+    posterImg.src = poster;
+    posterImg.alt = '';
+    posterImg.className = 'video__poster';
+    player.insertBefore(posterImg, player.firstChild);
+
+    playBtn.addEventListener('click', function () {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + youtubeId + '?rel=0&modestbranding=1&autoplay=1';
+      iframe.className = 'video__iframe';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('title', 'Player de vídeo YouTube');
+
+      posterImg.remove();
+      playBtn.remove();
+      if (overlay) overlay.remove();
+
+      player.appendChild(iframe);
+    });
+
+    return;
+  }
+
   const video = player.querySelector('.video__media');
   const playBtn = player.querySelector('[data-video-play]');
   const toggleBtn = player.querySelector('[data-video-toggle]');
@@ -175,19 +212,21 @@
 
 
   fullscreenBtn.addEventListener('click', () => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
     } else {
-      player.requestFullscreen();
+      (player.requestFullscreen || player.webkitRequestFullscreen).call(player);
     }
   });
 
-  document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
-      /* Reposiciona o viewport — o browser pode rolar a página durante fullscreen */
+  function onFullscreenExit() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
       player.scrollIntoView({ behavior: 'instant', block: 'center' });
     }
-  });
+  }
+
+  document.addEventListener('fullscreenchange', onFullscreenExit);
+  document.addEventListener('webkitfullscreenchange', onFullscreenExit);
 
 
   video.addEventListener('ended', () => {

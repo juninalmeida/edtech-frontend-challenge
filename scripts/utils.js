@@ -1,4 +1,4 @@
-const EdTech = {
+window.EdTech = {
   formatTime(s) {
     const m = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
