@@ -93,6 +93,13 @@
   padding: 0;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.slider__dot::after {
+  content: '';
+  position: absolute;
+  inset: -0.5rem;
 }
 
 .slider__dot:hover {

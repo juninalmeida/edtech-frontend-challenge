@@ -44,7 +44,7 @@
 }
 
 .faq__item--open {
-  background-color: var(--color-green-faq);
+  background-color: var(--color-green);
 }
 
 .faq__summary {
@@ -108,6 +108,10 @@
   font-size: var(--text-base);
   font-weight: var(--font-regular);
   line-height: var(--leading-relaxed);
+  color: var(--color-text-body);
+}
+
+.faq__item--open .faq__answer-inner p {
   color: var(--color-white);
 }
 

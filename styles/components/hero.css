@@ -244,7 +244,7 @@
   display: none;
 }
 
-@supports not (backdrop-filter: blur(8px)) {
+@supports not ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
   .hero__dashboard {
     background: var(--color-backdrop-fallback);
   }

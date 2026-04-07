@@ -15,7 +15,8 @@
       text: input.value,
       submitted: submitBtn.disabled && !editBtn.disabled,
     };
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+    catch { /* storage indisponível */ }
   }
 
   function restore() {
@@ -99,7 +100,8 @@
       selected: getSelected(),
       submitted: submitBtn.disabled && !editBtn.disabled,
     };
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+    catch { /* storage indisponível */ }
   }
 
   function setSubmittedState() {

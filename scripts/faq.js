@@ -2,23 +2,12 @@
   const items = document.querySelectorAll(".faq__item");
   if (!items.length) return;
 
-  let animating = false;
-
   function open(item) {
-    if (animating) return;
-    animating = true;
-
     item.setAttribute("open", "");
-    const answer = item.querySelector(".faq__answer");
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         item.classList.add("faq__item--open");
-
-        answer.addEventListener("transitionend", function handler() {
-          answer.removeEventListener("transitionend", handler);
-          animating = false;
-        });
       });
     });
 
@@ -26,17 +15,17 @@
   }
 
   function close(item) {
-    if (animating) return;
-    animating = true;
-
     item.classList.remove("faq__item--open");
     const answer = item.querySelector(".faq__answer");
 
-    answer.addEventListener("transitionend", function handler() {
-      answer.removeEventListener("transitionend", handler);
+    function onEnd() {
+      answer.removeEventListener("transitionend", onEnd);
+      clearTimeout(fallback);
       item.removeAttribute("open");
-      animating = false;
-    });
+    }
+
+    const fallback = setTimeout(onEnd, 400);
+    answer.addEventListener("transitionend", onEnd);
   }
 
   items.forEach((item) => {
