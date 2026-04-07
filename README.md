@@ -17,7 +17,7 @@ Teste técnico para a vaga de Desenvolvedor(a) Frontend na **DOT Digital Group**
 
 <br />
 
-[Como Rodar](#como-rodar) · [Decisões Técnicas](#decisões-técnicas) · [Estrutura](#estrutura-do-projeto)
+[**Demo ao Vivo**](https://juninalmeida.github.io/edtech-frontend-challenge/) · [Como Rodar](#como-rodar) · [Decisões Técnicas](#decisões-técnicas) · [Estrutura](#estrutura-do-projeto)
 
 </div>
 
